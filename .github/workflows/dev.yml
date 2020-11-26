@@ -1,0 +1,28 @@
+name: build And Deploy VUE2-APP To Dev Env
+on:
+  push:
+    branchs:
+      - dev
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+     # 下载源码
+    - name: Checkout
+      uses: actions/checkout@master
+    # 打包构建
+    - name: Build
+      uses: actions/setup-node@master
+    - run: npm install
+    - run: npm run build
+    # 部署到服务器
+    - name: Deploy
+      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      with:
+        host: ${{ secrets.HOST }}
+        user: ${{ secrets.USERNAME }}
+        pass: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        scp: |
+          './dist/*' => /usr/local/nginx/qiankun_apps/sub_apps/vue2_app
