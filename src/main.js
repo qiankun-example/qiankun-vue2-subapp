@@ -12,9 +12,8 @@ let instance = null  // 实例
 // 2. 渲染
 function render(props = {}) {
   const { container, routerBase } = props
-  console.log(window.__POWERED_BY_QIANKUN__, routerBase, process.env.BASE_URL)
   const router = new VueRouter({
-    base: '/qiankun-vue2-subapp',
+    base: window.__POWERED_BY_QIANKUN__ ? routerBase : process.env.BASE_URL, // 集成乾坤路径及单项目路径
     mode: 'history',
     routes
   })
@@ -25,6 +24,7 @@ function render(props = {}) {
   }).$mount(container ? container.querySelector('#app') : '#app')
 }
 
+// 没有集成qiankun渲染
 if (!window.__POWERED_BY_QIANKUN__) {
   render()
 }
