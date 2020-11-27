@@ -17,6 +17,13 @@ module.exports = {
       libraryTarget: 'umd',
       jsonpFunction: `webpackJsonp_${name}`,
     },
+    externals: process.env.NODE_ENV === 'production' ?
+      {
+        vue: "Vue",
+        "vue-router": "VueRouter",
+        axios: 'axios',
+        'element-ui': 'ELEMENT',
+      } : {}
   },
   devServer: {
     port: process.env.VUE_APP_PORT,
