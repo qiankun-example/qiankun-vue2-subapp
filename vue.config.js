@@ -31,6 +31,13 @@ module.exports = {
       '/front': {
         target: 'http://edufront.lagou.com',
         changeOrigin: true // 把请求头中host配置target
+      },
+      '/login': {
+        target: 'http://localhost:8000/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/login': ''
+        }
       }
     }
   }

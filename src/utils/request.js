@@ -4,6 +4,10 @@ import { Message } from 'element-ui'
 const request = axios.create({})
 
 request.interceptors.request.use(function (config) {
+  const user = JSON.parse(window.localStorage.getItem('user'))
+  if (user && user.access_token) {
+    config.headers.Authorization = user.access_token
+  }
   return config
 }, function (error) {
   return Promise.reject(error)
