@@ -29,6 +29,7 @@ jobs:
           './release.tgz' => /usr/local/nginx/qiankun_apps/sub_apps
         last_ssh: |
           cd /usr/local/nginx/qiankun_apps/sub_apps
+          rm -rf qiankun-vue2-subapp
           tar zxvf release.tgz
           rm -rf /usr/local/nginx/qiankun_apps/sub_apps/release.tgz
         
