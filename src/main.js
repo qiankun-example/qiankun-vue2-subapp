@@ -3,6 +3,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router';
 import App from './App.vue'
 import routes from './router'
+import ElementUI from 'element-ui'
+import './styles/index.scss'
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 

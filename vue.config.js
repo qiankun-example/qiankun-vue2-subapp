@@ -3,6 +3,13 @@ const { name } = require('./package.json')
 module.exports = {
   publicPath: '/main/qiankun-vue2-subapp',
   outputDir: 'qiankun-vue2-subapp',
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: '@import "~@/styles/variables.scss";'
+      }
+    }
+  },
   configureWebpack: {
     output: {
       // 把子应用打包成 umd 库格式
@@ -15,6 +22,16 @@ module.exports = {
     port: process.env.VUE_APP_PORT,
     headers: {
       'Access-Control-Allow-Origin': '*'
+    },
+    proxy: {
+      '/boss': {
+        target: 'http://eduboss.lagou.com',
+        changeOrigin: true // 把请求头中host配置target
+      },
+      '/front': {
+        target: 'http://edufront.lagou.com',
+        changeOrigin: true // 把请求头中host配置target
+      }
     }
   }
 }
