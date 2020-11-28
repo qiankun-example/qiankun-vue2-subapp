@@ -1,8 +1,8 @@
 const { name } = require('./package.json')
 /**@type{ import('@vue/cli-service').ProjectOptions} */
 module.exports = {
-  publicPath: '/main/qiankun-vue2-subapp',
-  outputDir: 'qiankun-vue2-subapp',
+  publicPath: '/main/permission',
+  outputDir: 'permission',
   css: {
     loaderOptions: {
       scss: {

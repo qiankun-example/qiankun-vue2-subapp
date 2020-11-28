@@ -16,7 +16,7 @@ jobs:
       uses: actions/setup-node@master
     - run: npm install
     - run: npm run build
-    - run: tar -zcvf release.tgz qiankun-vue2-subapp
+    - run: tar -zcvf release.tgz permission
     # 部署到服务器
     - name: Deploy
       uses: cross-the-world/ssh-scp-ssh-pipelines@latest
@@ -29,7 +29,7 @@ jobs:
           './release.tgz' => /usr/local/nginx/qiankun_apps/sub_apps
         last_ssh: |
           cd /usr/local/nginx/qiankun_apps/sub_apps
-          rm -rf qiankun-vue2-subapp
+          rm -rf permission
           tar zxvf release.tgz
           rm -rf /usr/local/nginx/qiankun_apps/sub_apps/release.tgz
         

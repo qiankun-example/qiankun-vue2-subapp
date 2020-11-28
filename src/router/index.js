@@ -6,6 +6,10 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    redirect: '/role'
+  },
+  {
+    path: '/role',
     name: 'role',
     component: () => import(/* webpackChunkName: 'role' */ '@/views/role/index.vue'),
     meta: { title: '角色管理' }
